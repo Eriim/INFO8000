@@ -5,7 +5,7 @@ import LocationObjects.ProvinceState;
 
 public class Client {
 
-	private Client client;
+	private int clientID;
 	private Account account;
 	private ProvinceState provinceState;
 	private Country country;
@@ -15,8 +15,8 @@ public class Client {
 	private String postalZipCode;
 	private String shippingAddress;
 
-	public Client(Client client, Account account, ProvinceState provinceState, Country country, ClientType clientType, String companyName, String address, String postalZipCode, String shippingAddress) {
-		this.client = client;
+	public Client(int clientID, Account account, ProvinceState provinceState, Country country, ClientType clientType, String companyName, String address, String postalZipCode, String shippingAddress) {
+		this.clientID = clientID;
 		this.account = account;
 		this.provinceState = provinceState;
 		this.country = country;
@@ -27,12 +27,12 @@ public class Client {
 		this.shippingAddress = shippingAddress;
 	}
 
-	public Client client() {
-		return client;
+	public int getClientID() {
+		return clientID;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
+	public void setClientID(int clientID) {
+		this.clientID = clientID;
 	}
 	public Account getAccount() {
 		return account;

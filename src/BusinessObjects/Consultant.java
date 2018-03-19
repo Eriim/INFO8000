@@ -3,23 +3,23 @@ package BusinessObjects;
 public class Consultant {
 	
 
-		private int accountID;
+		private Account account;
 		private String workPhone;
 		private Boolean isAdmin;
 		
 
-		public Consultant(int accountID, String workPhone, Boolean isAdmin) {
-			this.accountID = accountID;
+		public Consultant(Account account, String workPhone, Boolean isAdmin) {
+			this.account = account;
 			this.workPhone = workPhone;
 			this.isAdmin = isAdmin;
 			}
 
-		public int getAccountID() {
-			return accountID;
+		public Account getAccountID() {
+			return account;
 		}
 
-		public void setAccountID(int accountID) {
-			this.accountID = accountID;
+		public void setAccountID(Account account) {
+			this.account = account;
 		}
 
 		public String getWorkPhone() {
