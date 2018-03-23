@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 					
 					
 					Hasher hash = new Hasher();
-					String hashed = hash.HashedPassword(password, salt);
+					String hashed = hash.hashedPassword(password, salt);
 					
 					String hashPass = DAO.getHashPass(username, conn);
 					System.out.println(hashed);				

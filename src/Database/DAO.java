@@ -15,7 +15,7 @@ import BusinessObjects.Consultant;
 
 public class DAO {
 
-	private static final String dbUrl = "jdbc:derby://localhost:1527/C:/CapstoneDB";
+	private static final String dbUrl = "jdbc:derby://localhost:1527/BMATDB";
 
 	public static Connection OpenConnection(String CONNECTION_USER, String CONNECTION_PASSWORD)
 			throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -39,6 +39,42 @@ public class DAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void changePassword(String username, String hashedPass, String salt, Connection tempConnection ) throws SQLException{
+		
+		String tempSQLInsertStatement = "UPDATE ACCOUNT SET hashPass = '" + hashedPass + "', salt = '" + salt + "' WHERE username = '" + username + "'";
+		PreparedStatement tempPreparedStatement = tempConnection.prepareStatement(tempSQLInsertStatement);
+		System.out.println("Password changed for " + username);
+		tempPreparedStatement.execute();
+		tempConnection.commit();	
+		
+	}
+	
+	public static Boolean isCorrectEmail(String username, String enteredEmail, Connection tempConnection) throws SQLException{
+		Boolean isEmail = false;
+		String accountEmail = "";
+		
+		String tempSQLSelectQuery = "SELECT email FROM ACCOUNT WHERE username='" + username + "'";
+		PreparedStatement tempPreparedStatement = tempConnection.prepareStatement(tempSQLSelectQuery);
+		ResultSet tempResultSet = tempPreparedStatement.executeQuery();
+		if (tempResultSet.next()) {
+			accountEmail = tempResultSet.getString("EMAIL");
+			System.out.println(accountEmail + "....entered:" + enteredEmail);
+			if(accountEmail.equals(enteredEmail)) {
+				isEmail = true;
+				System.out.println("Email is correct.");
+			}
+		
+		}
+		else
+		{
+			System.out.println("Email is false.");
+		}
+		
+		
+	
+		return isEmail;
 	}
 
 	public static String getSalt(String username, Connection tempConnection) throws SQLException {

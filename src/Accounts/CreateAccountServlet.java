@@ -109,7 +109,7 @@ public class CreateAccountServlet extends HttpServlet {
 				
 				Hasher hasher = new Hasher();
 				account.setSalt(hasher.genSalt());
-				account.setHashPass(hasher.HashedPassword(password, account.getSalt()));
+				account.setHashPass(hasher.hashedPassword(password, account.getSalt()));
 				DAO.createAccount(account, conn);
 				
 				int accountID = DAO.getAccountID(account.getUsername(), conn);
