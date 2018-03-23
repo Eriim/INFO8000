@@ -27,7 +27,10 @@
 	<h2>Welcome, ${username}</h2>
 	
 	<p>${message}</p>
-		
+	
+	<form action ="SurveyServlet" method="post">
+		<input type ="submit" value ="Take a Survey"/>
+	</form>	
 	
 </body>
 </html>

@@ -5,17 +5,20 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import org.apache.derby.jdbc.ClientDriver;
 
 import BusinessObjects.Account;
+import BusinessObjects.Category;
 import BusinessObjects.Client;
 import BusinessObjects.Consultant;
+import BusinessObjects.Questions;
 
 public class DAO {
 
-	private static final String dbUrl = "jdbc:derby://localhost:1527/BMATDB";
+	private static final String dbUrl = "jdbc:derby://localhost:1527/C:/INFO8000";
 
 	public static Connection OpenConnection(String CONNECTION_USER, String CONNECTION_PASSWORD)
 			throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -75,6 +78,37 @@ public class DAO {
 		
 	
 		return isEmail;
+	}
+	
+	public static Boolean isAdmin(int accountID, Connection tempConnection) throws SQLException {
+		
+		String tempSQLSelectQuery = "SELECT isAdmin FROM CONSULTANT WHERE accountID=" + accountID;
+		PreparedStatement tempPreparedStatement = tempConnection.prepareStatement(tempSQLSelectQuery);
+		ResultSet tempResultSet = tempPreparedStatement.executeQuery();
+		tempResultSet.next();
+		if (tempResultSet.getBoolean("isAdmin") == true) {
+			System.out.println("User is an admin");
+			return true;
+		}else {
+			System.out.println("User is not an admin");
+			return false;
+		}
+
+	}
+
+	public static Boolean isConsultant(int accountID, Connection tempConnection) throws SQLException {
+	
+	String tempSQLSelectQuery = "SELECT accountID FROM CONSULTANT WHERE accountID=" + accountID ;
+	PreparedStatement tempPreparedStatement = tempConnection.prepareStatement(tempSQLSelectQuery);
+	ResultSet tempResultSet = tempPreparedStatement.executeQuery();
+	if (tempResultSet.next()) {
+		System.out.println("User is consultant");
+		return true;
+	}else {
+		System.out.println("User is not a Consultant");
+		return false;
+	}
+
 	}
 
 	public static String getSalt(String username, Connection tempConnection) throws SQLException {
@@ -185,5 +219,35 @@ public class DAO {
 		tempPreparedStatement.execute();
 		tempConnection.commit();
 	}
-
+	
+	public static ArrayList<Category> getSurveyCategory(Connection tempConnection) throws SQLException {
+		String tempSQLSelectStatement = "SELECT * FROM CATEGORY";
+		PreparedStatement tempPreparedStatement = tempConnection.prepareStatement(tempSQLSelectStatement);
+		ArrayList<Category> tempArrayList = new ArrayList<Category>();
+		ResultSet tempResultSet = tempPreparedStatement.executeQuery();
+		while(tempResultSet.next()) {			
+			Category tempCategory = new Category(tempResultSet.getInt("categoryID"), tempResultSet.getString("categoryText"));
+			tempArrayList.add(tempCategory);
+			
+		}
+		return tempArrayList;
+		
+	}
+	public static ArrayList<Questions> getSureyQuestions(Connection tempConnection) throws SQLException {
+		String tempSQLSelectStatement = "SELECT * FROM QUESTIONS";
+		PreparedStatement tempPreparedStatement = tempConnection.prepareStatement(tempSQLSelectStatement);
+		ArrayList<Questions> tempArrayList = new ArrayList<Questions>();
+		ResultSet tempResultSet = tempPreparedStatement.executeQuery();
+		while(tempResultSet.next()) {
+			Questions tempQuestions = new Questions();
+			tempQuestions.setQuestionID(tempResultSet.getInt("questionID"));
+			tempQuestions.setCategoryID(tempResultSet.getInt("categoryID"));
+			tempQuestions.setQuestionText(tempResultSet.getString("questionText"));
+			
+			tempArrayList.add(tempQuestions);
+			
+		}
+		return tempArrayList;
+		
+	}
 }
