@@ -10,19 +10,20 @@
 </head>
 <body>
 	<header>
-	<div id ="headerTitles">
-		<h1>Six S Partners</h1>
-		<h4>Change Readiness Assessment and Organization Tool</h4>
-	</div>	
-		<ul class="menu-bar">
-			 <li class="active"><a href="index.jsp">${username}</a></li>
-			 <li ><a href="createAccount.jsp">Create</a></li>
-			 <li><a href="login.jsp">Log-Out</a></li>
-		</li>
-		</ul>
-	
+		<div id ="headerTitles">
+			<h1>Six S Partners</h1>
+			<h4>Change Readiness Assessment and Organization Tool</h4>
+			
+			<ul class="menu-bar">
+				 <li class="active"><a href="index.jsp">${username}</a></li>
+				 <li ><a href="createAccount.jsp">Create</a></li>
+				 <li><a href="login.jsp">Log-Out</a></li>
+			</li>
+			</ul>
+		</div>
 	</header>
 	
+	<div class="mainBody">
 	<h1>Six S Solutions Change Readiness Portal</h1>
 	<h2>Welcome, ${username}</h2>
 	
@@ -31,6 +32,6 @@
 	<form action ="SurveyServlet" method="post">
 		<input type ="submit" value ="Take a Survey"/>
 	</form>	
-	
+	</div>
 </body>
 </html>

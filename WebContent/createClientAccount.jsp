@@ -21,7 +21,7 @@
 		</ul>
 	
 	</header>
-	
+	<div id="mainBody">
 	<h1 class="title">Create Client Account: ${name}</h1>
 	<h2 class="error">${error}</h2>
 	<form class = "form" action="CreateClientServlet" method = "post">
@@ -113,6 +113,7 @@
 		<input type="text" name = "shippingAddress"><br>
 		<input type = "submit" name = "submit" value = "Create Client" class="sixSBtn">
 	</form>
-
+	</div>
+	
 </body>
 </html>

@@ -22,7 +22,7 @@
 		</ul>
 	
 	</header>
-	
+	<div id="mainBody">
 	<h1 class="title">Create Account</h1>
 	<h2 class="error">${error}</h2>
 	<form class = "form" action="CreateAccountServlet" method = "post">
@@ -45,6 +45,6 @@
 		<input type="radio" name="accountType" value="Consultant">Consultant
 		<input type = "submit" name = "submit" value = "Add Account" class="sixSBtn">
 	</form>
-
+	</div>
 </body>
 </html>

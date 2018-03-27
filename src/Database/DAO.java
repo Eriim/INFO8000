@@ -18,7 +18,7 @@ import BusinessObjects.Questions;
 
 public class DAO {
 
-	private static final String dbUrl = "jdbc:derby://localhost:1527/C:/INFO8000";
+	private static final String dbUrl = "jdbc:derby://localhost:1527/BMATDB";
 
 	public static Connection OpenConnection(String CONNECTION_USER, String CONNECTION_PASSWORD)
 			throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {

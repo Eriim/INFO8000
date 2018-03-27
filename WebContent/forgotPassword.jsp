@@ -29,7 +29,7 @@
 	
 	
 	
-	<div >
+	<div id="mainBody">
 		<h1 class="title">Confirm Email to Reset Password</h1>
 		
 		<form action="ResetPasswordServlet" method = "post" class = "form">

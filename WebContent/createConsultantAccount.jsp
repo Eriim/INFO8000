@@ -21,8 +21,10 @@
 			</ul>
 	
 	</header>
-		<h1 class="title">Create Consultant Account: ${name}</h1>
+	<div id="mainBody">
+	<h1 class="title">Create Consultant Account: ${name}</h1>
 	<h2 class="error">${error}</h2>
+	
 	
 	<form class = "form" action="CreateConsultantServlet" method = "post">
 		
@@ -34,6 +36,7 @@
 		
 		<input type = "submit" name = "submit" value = "Save Consultant" class="sixSBtn">
 	</form>
+	</div>
 
 </body>
 </html>

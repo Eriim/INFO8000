@@ -19,7 +19,7 @@
 
 <body>
 	<header>
-	
+		
 		<h1>Six S Partners</h1>
 		<h4>Change Readiness Assessment and Organization Tool</h4>
 	
@@ -29,7 +29,7 @@
 	
 	
 	
-	<div >
+	<div id="mainBody">
 		<h1 class="title">Log In</h1>
 		
 		<form action="LoginServlet" method = "post" class = "form">
