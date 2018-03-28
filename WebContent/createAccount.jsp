@@ -42,7 +42,11 @@
 		<label for = "lastN">Last Name</label>
 		<input type="text" name = "lastN"><br>
 		<input type="radio" name="accountType" value="Client">Client
-		<input type="radio" name="accountType" value="Consultant">Consultant
+		<c:choose>
+		 	<c:when test="${Role.role =='Admin'}">
+				<input type="radio" name="accountType" value="Consultant">Consultant
+		 	</c:when>
+		 </c:choose>
 		<input type = "submit" name = "submit" value = "Add Account" class="sixSBtn">
 	</form>
 	</div>

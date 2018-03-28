@@ -1,6 +1,7 @@
 package Database;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,9 +12,12 @@ import java.util.Properties;
 import org.apache.derby.jdbc.ClientDriver;
 
 import BusinessObjects.Account;
+import BusinessObjects.Answers;
 import BusinessObjects.Category;
 import BusinessObjects.Client;
 import BusinessObjects.Consultant;
+import BusinessObjects.QuestionAnswer;
+import BusinessObjects.Questionnaire;
 import BusinessObjects.Questions;
 
 public class DAO {
@@ -42,6 +46,49 @@ public class DAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void persistSurveyResults(Client client, Questionnaire questionnaire, Date date, ArrayList<Questions> questions, ArrayList<Answers> answers, Connection conn) throws SQLException {
+		String tempSQLINSERTQUESTIONNAIRE =  "INSERT INTO QUESTIONNAIRE (dateCompleted, isCompleted, clientID)"
+				+ " VALUES('" + date + "', ' true', '" + client.getClientID() + "')";
+		PreparedStatement tempPreparedStatement = conn.prepareStatement(tempSQLINSERTQUESTIONNAIRE);
+		tempPreparedStatement.execute();
+		
+		for (int i= 0; i < questions.size(); i++)
+		{
+			String tempSQLINSERTQUESTIONANSWER = "INSERT INTO QUESTIONANSWER(questionID, answerID, questionnaireID)"
+					+ " VALUES(" + questions.get(i).getQuestionID() + ", " + answers.get(i).getAnswerID() + " , '" + questionnaire.getQuestionnaireID() + "')";
+			PreparedStatement tempPreparedStatement2 = conn.prepareStatement(tempSQLINSERTQUESTIONANSWER);
+			tempPreparedStatement2.execute();
+		}
+		
+	}
+	
+	public static ArrayList<QuestionAnswer> getSurveyResults(int questionnaireID, Connection tempConnection) throws SQLException {
+		
+		ArrayList<QuestionAnswer> questionsAnswers = new ArrayList<QuestionAnswer>();
+		String tempSQLSelectQuery = "SELECT * FROM QUESTIONANSWER WHERE questionnaireID=" + questionnaireID;
+		PreparedStatement tempPreparedStatement = tempConnection.prepareStatement(tempSQLSelectQuery);
+		ResultSet tempResultSet = tempPreparedStatement.executeQuery();
+		
+		while (tempResultSet.next()) {
+			QuestionAnswer qa  = new QuestionAnswer();
+			Questions tempQuestion = new Questions();
+			
+			Answers tempAnswers = new Answers();
+			tempQuestion.setQuestionID(tempResultSet.getInt("QUESTIONID"));
+			tempAnswers.setAnswerID(tempResultSet.getInt("ANSWERID"));
+			qa.setQuestionnaireID(tempResultSet.getInt("QUESTIONNAIREID"));
+			qa.setQuestionAnswerID(tempResultSet.getInt("QUESTIONANSWERID"));
+			qa.setQuestion(tempQuestion);
+			qa.setAnswer(tempAnswers);
+			questionsAnswers.add(qa);
+			
+		}
+		
+		System.out.println("Question Answer returned as question answer");
+		return questionsAnswers;
+		
 	}
 	
 	public static void changePassword(String username, String hashedPass, String salt, Connection tempConnection ) throws SQLException{
@@ -85,11 +132,15 @@ public class DAO {
 		String tempSQLSelectQuery = "SELECT isAdmin FROM CONSULTANT WHERE accountID=" + accountID;
 		PreparedStatement tempPreparedStatement = tempConnection.prepareStatement(tempSQLSelectQuery);
 		ResultSet tempResultSet = tempPreparedStatement.executeQuery();
-		tempResultSet.next();
+		if(tempResultSet.next()) {
 		if (tempResultSet.getBoolean("isAdmin") == true) {
 			System.out.println("User is an admin");
 			return true;
 		}else {
+			System.out.println("User is not an admin");
+			return false;
+		}}
+		else{
 			System.out.println("User is not an admin");
 			return false;
 		}

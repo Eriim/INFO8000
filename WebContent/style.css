@@ -17,7 +17,7 @@ body{
 }
 header{
 
-	width: 1000px;
+	width: 100%;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D */
 	background: #7d7e7d; /* Old browsers */
 	background: -moz-linear-gradient(-45deg, #7d7e7d 0%, #0e0e0e 100%); /* FF3.6-15 */
@@ -31,7 +31,7 @@ header{
 footer{
 	
 	float: left;
-	width: 1000px;
+	width: 100%;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D */
 	background: #7d7e7d; /* Old browsers */
 	background: -moz-linear-gradient(-45deg, #7d7e7d 0%, #0e0e0e 100%); /* FF3.6-15 */
@@ -61,7 +61,17 @@ label{
 	float:left;
 	
 }
-table, th, td {
+table, tr{
+	  border: 1px solid black;
+}
+
+.answers{
+	  border: 1px solid black;
+	  float:left;
+
+}
+
+.survey{
     border: 1px solid black;
 }
 input{

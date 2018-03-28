@@ -17,7 +17,11 @@
 			
 			<ul class="menu-bar">
 				 <li class="active"><a href="index.jsp">${username}</a></li>
+			<c:choose>
+		    	<c:when test="${Role.role =='Consultant' || Role.role == 'Admin'}">
 				 <li ><a href="createAccount.jsp">Create</a></li>
+				 </c:when>
+			</c:choose>
 				 <li><a href="login.jsp">Log-Out</a></li>
 			</li>
 			</ul>
@@ -43,7 +47,7 @@
 		
 			<tr>
 			<td><c:out value="${question.questionText}"/></td>
-				<form action="/Capstone/ResultsServlet" method = "post" class = "form">
+			<form action="/Capstone/ResultsServlet" method = "post" class = "form">
 			<td><input type="radio" name="${question.questionID}" value="Yes" id="${question.categoryID}${question.questionID}1" class="radioBtn"/></td>
 
 			<td><input type="radio" name="${question.questionID}" value="No" id="${question.categoryID}${question.questionID}2" class="radioBtn"/></td>

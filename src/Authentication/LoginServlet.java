@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import Database.ConnectionHandler;
 import Database.DAO;
 import Authentication.Hasher;
+import BusinessObjects.Role;
 
 /**
  * Servlet implementation class LoginServlet
@@ -50,6 +51,26 @@ public class LoginServlet extends HttpServlet {
 					HttpSession session = request.getSession();
 					ConnectionHandler handler = (ConnectionHandler)session.getAttribute("connection");
 					Connection conn = DAO.OpenConnection("eric", "password");
+					
+					int accountID = DAO.getAccountID(username, conn);
+					
+					Role role = new Role();
+					if(DAO.isAdmin(accountID, conn))
+					{
+						role.setRole("Admin");
+						
+					}
+					else if(DAO.isConsultant(accountID, conn))
+					{
+						role.setRole("Consultant");
+					}
+					else
+					{
+						role.setRole("Client");
+					}
+					
+					//set role
+					session.setAttribute("Role", role);
 					
 					//get salt
 					

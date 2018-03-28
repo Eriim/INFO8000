@@ -30,15 +30,37 @@
 	</header>
 	
 	
-
-		<h2 class="title">Your results:</h2>
-			<div id="mainBody">
+	<div id="mainBody">
+		<h2 class="title">Confirm your answers: </h2>
+	
 		<table class="answers">	
-		
+		<br><br><br>
 		<c:forEach var="category" items="${requestScope.categoryList}">		
 			<th><c:out value="${category.categoryText}"/></th>
 			<th></th>
+					<c:forEach items="${questionList}" var="question">
+						<c:if test = "${question.categoryID == category.categoryID}">
+							
+							
+									<tr>	
+										<td><c:out value="${question.questionText}"/><td>
+								<c:forEach items="${requestScope.questionAnswerList}" var="questionAnswer">
+							
+									<c:if test = "${questionAnswer.question.questionID == question.questionID}">
+									
+										<td><c:out value="${questionAnswer.answer.answerText}"/></td>
+										</tr>
+										
+									</c:if>
+											
+							
+								</c:forEach>
+							
 					
+							
+							
+						</c:if>
+				</c:forEach>
 		</c:forEach>
 				
 		</table>

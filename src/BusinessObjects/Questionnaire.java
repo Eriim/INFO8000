@@ -40,6 +40,12 @@ public class Questionnaire {
 	public void setClient(Client client) {
 		this.client = client;
 	}
+
+
+	public void setQuestionnaireID(int id) {
+		this.questionnaireID = id;
+		
+	}
 	
 	
 

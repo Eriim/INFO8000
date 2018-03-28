@@ -6,6 +6,7 @@ public class QuestionAnswer {
 	private Questions question;
 	private Category category;	
 	private Answers answer;
+	private int questionnaireID;
 	
 	public Answers getAnswer() {
 		return answer;
@@ -13,6 +14,18 @@ public class QuestionAnswer {
 
 	public void setAnswer(Answers answer) {
 		this.answer = answer;
+	}
+
+	public int getQuestionnaireID() {
+		return questionnaireID;
+	}
+
+	public void setQuestionnaireID(int questionnaireID) {
+		this.questionnaireID = questionnaireID;
+	}
+
+	public void setQuestionAnswerID(int questionAnswerID) {
+		this.questionAnswerID = questionAnswerID;
 	}
 
 	public QuestionAnswer() {};
