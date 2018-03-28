@@ -20,6 +20,7 @@
 <body>
 	<header>
 		
+	
 		<h1>Six S Partners</h1>
 		<h4>Change Readiness Assessment and Organization Tool</h4>
 	
@@ -48,6 +49,17 @@
 		
 		
 	</div>
+		
+	<footer>
+	
+	<div class="address">
+	<h3>Contact Us</h3>
+	<p>Phone: 1-866-579-7497<br>Fax: 1-888-240-4866<br>Email: info@sixspartners.com<br>Website: www.sixspartners.com</p>
+	</div>
+	<div class="address">
+	<p><br><br><br>&copy; Six S Partners</p>
+	</div>
+	</footer>
 
 </body>
 </html>

@@ -94,7 +94,7 @@ public class ResultsServlet extends HttpServlet {
 			catch (Exception e) {
 				e.printStackTrace();
 			}
-		request.getRequestDispatcher("./Results.jsp").forward(request, response);
+		request.getRequestDispatcher("/results.jsp").forward(request, response);
 	}
 
 }

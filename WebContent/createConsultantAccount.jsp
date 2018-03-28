@@ -37,6 +37,16 @@
 		<input type = "submit" name = "submit" value = "Save Consultant" class="sixSBtn">
 	</form>
 	</div>
-
+		
+	<footer>
+	
+	<div class="address">
+	<h3>Contact Us</h3>
+	<p>Phone: 1-866-579-7497<br>Fax: 1-888-240-4866<br>Email: info@sixspartners.com<br>Website: www.sixspartners.com</p>
+	</div>
+	<div class="address">
+	<p><br><br><br>&copy; Six S Partners</p>
+	</div>
+	</footer>
 </body>
 </html>

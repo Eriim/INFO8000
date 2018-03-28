@@ -10,7 +10,6 @@
 </head>
 <body>
 	<header>
-		<div id ="headerTitles">
 			<h1>Six S Partners</h1>
 			<h4>Change Readiness Assessment and Organization Tool</h4>
 			
@@ -23,6 +22,7 @@
 		</div>
 	</header>
 	
+	
 	<div class="mainBody">
 	<h1>Six S Solutions Change Readiness Portal</h1>
 	<h2>Welcome, ${username}</h2>
@@ -30,8 +30,21 @@
 	<p>${message}</p>
 	
 	<form action ="SurveyServlet" method="post">
-		<input type ="submit" value ="Take a Survey"/>
+		<input type ="submit" value ="Take a Survey" class="sixSBtn"/>
 	</form>	
 	</div>
+	
+	
+	<footer>
+	
+	<div class="address">
+	<h3>Contact Us</h3>
+	<p>Phone: 1-866-579-7497<br>Fax: 1-888-240-4866<br>Email: info@sixspartners.com<br>Website: www.sixspartners.com</p>
+	</div>
+	<div class="address">
+	<p><br><br><br>&copy; Six S Partners</p>
+	</div>
+	</footer>
+	
 </body>
 </html>

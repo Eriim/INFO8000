@@ -51,7 +51,7 @@ public class SurveyServlet extends HttpServlet {
 			catch (Exception e) {
 				e.printStackTrace();
 			}
-		request.getRequestDispatcher("./SurveyServlet.jsp").forward(request, response);
+		request.getRequestDispatcher("./surveyServlet.jsp").forward(request, response);
 		
 		
 	}
